@@ -1,7 +1,17 @@
 
 import { Button } from "@/components/ui/button";
+import { useState } from "react";
+import LoginModal from "./LoginModal";
+import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const navigate = useNavigate();
+  
+  const handleTryForFree = () => {
+    setIsLoginModalOpen(true);
+  };
+  
   return (
     <section className="py-12 md:py-24 text-center grid-bg min-h-[70vh] flex flex-col items-center justify-center">
       <div className="max-w-5xl mx-auto px-6">
@@ -22,13 +32,22 @@ const Hero = () => {
         </div>
         
         <div>
-          <Button className="bg-pink-500 hover:bg-pink-600 text-white rounded-full px-10 py-6 text-lg">
+          <Button 
+            className="bg-pink-500 hover:bg-pink-600 text-white rounded-full px-10 py-6 text-lg"
+            onClick={handleTryForFree}
+          >
             Essayer Gratuitement
           </Button>
         </div>
         
         <p className="text-gray-600 mt-12">Utilisés par des étudiants de</p>
       </div>
+      
+      {/* Login Modal */}
+      <LoginModal 
+        isOpen={isLoginModalOpen} 
+        onClose={() => setIsLoginModalOpen(false)} 
+      />
     </section>
   );
 };
