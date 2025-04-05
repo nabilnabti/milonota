@@ -1,10 +1,9 @@
 
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { useState } from "react";
-import { Apple, ArrowRight, Facebook, Mail } from "lucide-react";
+import { Apple, Facebook, Mail } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 interface LoginModalProps {
   isOpen: boolean;
@@ -12,8 +11,26 @@ interface LoginModalProps {
 }
 
 const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  
+  const handleGoogleLogin = () => {
+    console.log("Google login");
+    navigate("/dashboard");
+  };
+  
+  const handleAppleLogin = () => {
+    console.log("Apple login");
+    navigate("/dashboard");
+  };
+  
+  const handleFacebookLogin = () => {
+    console.log("Facebook login");
+    navigate("/dashboard");
+  };
+  
+  const handleEmailLogin = () => {
+    navigate("/login");
+  };
   
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
@@ -27,6 +44,7 @@ const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
           <Button 
             variant="outline" 
             className="flex items-center justify-center gap-3 p-6 text-black border border-gray-200 hover:bg-gray-50"
+            onClick={handleGoogleLogin}
           >
             <img 
               src="/lovable-uploads/0c4d618a-7472-4aac-a23e-08a5ab0bbe05.png" 
@@ -39,6 +57,7 @@ const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
           <Button 
             variant="outline" 
             className="flex items-center justify-center gap-3 p-6 text-black border border-gray-200 hover:bg-gray-50"
+            onClick={handleAppleLogin}
           >
             <Apple className="w-6 h-6" />
             <span className="text-base font-medium">Continuer avec Apple</span>
@@ -47,6 +66,7 @@ const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
           <Button 
             variant="outline" 
             className="flex items-center justify-center gap-3 p-6 text-black border border-gray-200 hover:bg-gray-50"
+            onClick={handleFacebookLogin}
           >
             <Facebook className="w-6 h-6 text-blue-600" />
             <span className="text-base font-medium">Continuer avec Facebook</span>
@@ -64,7 +84,7 @@ const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
           <Button 
             variant="outline" 
             className="flex items-center justify-center gap-3 p-6 text-black border border-gray-200 hover:bg-gray-50"
-            onClick={() => window.location.href = "/login"}
+            onClick={handleEmailLogin}
           >
             <Mail className="w-6 h-6 text-pink-500" />
             <span className="text-base font-medium">Continuer avec Email</span>

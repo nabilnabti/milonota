@@ -5,17 +5,20 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
 import { Apple, ArrowRight, Facebook, Mail } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isSignUp, setIsSignUp] = useState(false);
+  const navigate = useNavigate();
   
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Here you would handle the authentication logic
     console.log("Login attempt with:", { email, password });
+    // For now, we'll simply redirect to the dashboard
+    navigate("/dashboard");
   };
   
   return (
@@ -38,6 +41,7 @@ const Login = () => {
             <Button 
               variant="outline" 
               className="flex items-center justify-center gap-3 p-6 text-black border border-gray-200 hover:bg-gray-50"
+              onClick={() => navigate("/dashboard")}
             >
               <img 
                 src="/lovable-uploads/0c4d618a-7472-4aac-a23e-08a5ab0bbe05.png" 
@@ -50,6 +54,7 @@ const Login = () => {
             <Button 
               variant="outline" 
               className="flex items-center justify-center gap-3 p-6 text-black border border-gray-200 hover:bg-gray-50"
+              onClick={() => navigate("/dashboard")}
             >
               <Apple className="w-6 h-6" />
               <span className="text-base font-medium">Continuer avec Apple</span>
@@ -58,6 +63,7 @@ const Login = () => {
             <Button 
               variant="outline" 
               className="flex items-center justify-center gap-3 p-6 text-black border border-gray-200 hover:bg-gray-50"
+              onClick={() => navigate("/dashboard")}
             >
               <Facebook className="w-6 h-6 text-blue-600" />
               <span className="text-base font-medium">Continuer avec Facebook</span>
