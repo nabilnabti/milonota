@@ -2,12 +2,7 @@
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { ChevronRight } from "lucide-react";
-import { 
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { Separator } from "@/components/ui/separator";
 
 const Support = () => {
   const categories = [
@@ -20,7 +15,7 @@ const Support = () => {
       id: 1,
       category: "getting-started",
       question: "Dans quelles langues puis-je utiliser Neuronote ?",
-      answer: "Neuronote est disponible en français et en anglais. Vous pouvez changer la langue dans les paramètres de votre compte."
+      answer: "L'application est disponible en français et en anglais, mais vous pouvez importer des cours dans n'importe quelle langue."
     },
     {
       id: 2,
@@ -61,70 +56,58 @@ const Support = () => {
   ];
   
   const [selectedCategory, setSelectedCategory] = useState(categories[0].id);
-  const [selectedQuestion, setSelectedQuestion] = useState<number | null>(null);
+  const [selectedQuestion, setSelectedQuestion] = useState<number | null>(1);
   
   const filteredQuestions = faqItems.filter(item => item.category === selectedCategory);
   const selectedFaq = faqItems.find(item => item.id === selectedQuestion);
   
   return (
-    <div className="flex min-h-screen bg-gray-50">
-      {/* Left column - Categories */}
-      <div className="w-1/4 p-6 border-r border-gray-200">
-        <h1 className="text-3xl font-bold border-l-4 border-pink-500 pl-4 mb-6">Centre d'aide</h1>
-        
-        <Card className="mb-8">
-          <CardContent className="p-4">
-            <p className="text-gray-700 text-sm">
-              Une question ou un problème ? Consultez notre FAQ ou contactez-nous directement via le formulaire.
-              Nous sommes là pour vous aider !
+    <div className="flex min-h-screen bg-white">
+      {/* Left column - Categories and Questions */}
+      <div className="w-1/2 border-r border-gray-200">
+        <div className="p-6 border-b border-gray-200">
+          <h1 className="text-3xl font-bold border-l-4 border-pink-500 pl-4">Centre d'aide</h1>
+          
+          <div className="mt-6 text-gray-600 text-sm">
+            <p>
+              Une question ou un problème ? Consultez notre FAQ
+              ou contactez-nous directement via le formulaire.
             </p>
-          </CardContent>
-        </Card>
-        
-        <div className="space-y-4">
-          {categories.map((category) => (
-            <button
-              key={category.id}
-              onClick={() => {
-                setSelectedCategory(category.id);
-                setSelectedQuestion(null);
-              }}
-              className={`w-full text-left p-3 rounded-md transition-colors ${
-                selectedCategory === category.id 
-                  ? "bg-gray-200 font-semibold" 
-                  : "hover:bg-gray-100"
-              }`}
-            >
-              {category.title}
-            </button>
-          ))}
+            <p className="mt-2">Nous sommes là pour vous aider !</p>
+          </div>
         </div>
-      </div>
-      
-      {/* Middle column - Questions */}
-      <div className="w-1/3 p-6 border-r border-gray-200 overflow-y-auto">
-        <h2 className="text-2xl font-semibold mb-6">{categories.find(c => c.id === selectedCategory)?.title}</h2>
         
-        <div className="space-y-3">
-          {filteredQuestions.map((item) => (
-            <Card 
-              key={item.id} 
-              className={`hover:shadow-md transition-shadow cursor-pointer ${
-                selectedQuestion === item.id ? "border-l-4 border-l-pink-500" : ""
-              }`}
-              onClick={() => setSelectedQuestion(item.id)}
-            >
-              <CardContent className="p-4 flex items-center justify-between">
-                <span className="pr-4">{item.question}</span>
-                <ChevronRight className="h-5 w-5 flex-shrink-0 text-gray-400" />
-              </CardContent>
-            </Card>
+        <div className="p-6">
+          {categories.map((category) => (
+            <div key={category.id} className="mb-8">
+              <h2 className="text-xl font-semibold mb-4">{category.title}</h2>
+              
+              <div className="space-y-3">
+                {faqItems
+                  .filter(item => item.category === category.id)
+                  .map((item) => (
+                    <Card 
+                      key={item.id} 
+                      className={`hover:shadow-md transition-shadow cursor-pointer ${
+                        selectedQuestion === item.id ? "border-l-4 border-l-pink-500" : ""
+                      }`}
+                      onClick={() => setSelectedQuestion(item.id)}
+                    >
+                      <CardContent className="p-4 flex items-center justify-between">
+                        <span className="pr-4">{item.question}</span>
+                        <ChevronRight className="h-5 w-5 flex-shrink-0 text-gray-400" />
+                      </CardContent>
+                    </Card>
+                  ))
+                }
+              </div>
+            </div>
           ))}
         </div>
       </div>
       
       {/* Right column - Selected FAQ answer */}
-      <div className="flex-1 p-6 overflow-y-auto">
+      <div className="w-1/2 p-8 overflow-y-auto">
         {selectedFaq ? (
           <div>
             <h2 className="text-2xl font-bold mb-6">{selectedFaq.question}</h2>
