@@ -79,7 +79,7 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
             </SidebarGroup>
             
             <div className="mt-auto px-6 py-8">
-              <Link to="/dashboard/premium" className="flex flex-col items-center gap-2 bg-[#925dc6] text-white rounded-lg p-4 hover:bg-[#7a4ea5] transition-colors">
+              <Link to="/dashboard/premium" className={`flex flex-col items-center gap-2 bg-[#925dc6] text-white rounded-lg p-4 hover:bg-[#7a4ea5] transition-colors ${isActive("/dashboard/premium") ? "bg-[#7a4ea5]" : ""}`}>
                 <Zap className="w-6 h-6" />
                 <span className="font-semibold">Notes illimitées</span>
                 <span className="text-sm">Essai gratuit</span>

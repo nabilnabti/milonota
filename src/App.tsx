@@ -13,6 +13,7 @@ import Dashboard from "./pages/dashboard/Dashboard";
 import Guide from "./pages/dashboard/Guide";
 import Support from "./pages/dashboard/Support";
 import Settings from "./pages/dashboard/Settings";
+import Premium from "./pages/dashboard/Premium";
 
 const queryClient = new QueryClient();
 
@@ -35,6 +36,7 @@ const App = () => (
           <Route path="/dashboard/guide" element={<DashboardLayout><Guide /></DashboardLayout>} />
           <Route path="/dashboard/support" element={<DashboardLayout><Support /></DashboardLayout>} />
           <Route path="/dashboard/settings" element={<DashboardLayout><Settings /></DashboardLayout>} />
+          <Route path="/dashboard/premium" element={<DashboardLayout><Premium /></DashboardLayout>} />
           
           {/* Redirect /dashboard/home to /dashboard */}
           <Route path="/dashboard/home" element={<Navigate to="/dashboard" replace />} />
