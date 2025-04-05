@@ -1,28 +1,37 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
-import { Mail, Instagram, TiktokIcon } from "lucide-react";
+import { Mail, Instagram } from "lucide-react";
 
-// Tiktok icon isn't directly available in lucide-react
 // Creating a custom TiktokIcon component
-const TiktokIcon = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    {...props}
-  >
-    <path d="M9 12a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z" />
-    <path d="M15 8h.01" />
-    <path d="M20 12a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z" />
-  </svg>
-);
+const TiktokIcon = (props: React.SVGProps<SVGSVGElement> & { size?: number }) => {
+  // Convert size prop to width/height if provided
+  const svgProps = {...props};
+  if (props.size) {
+    svgProps.width = props.size;
+    svgProps.height = props.size;
+    delete svgProps.size;
+  }
+  
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      {...svgProps}
+    >
+      <path d="M9 12a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z" />
+      <path d="M15 8h.01" />
+      <path d="M20 12a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z" />
+    </svg>
+  );
+};
 
 const Footer = () => {
   return (
