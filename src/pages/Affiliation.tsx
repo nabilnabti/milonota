@@ -6,6 +6,7 @@ import HeroAffiliation from "@/components/affiliation/HeroAffiliation";
 import HowItWorks from "@/components/affiliation/HowItWorks";
 import EarningSteps from "@/components/affiliation/EarningSteps";
 import NoLimits from "@/components/affiliation/NoLimits";
+import FaqAffiliation from "@/components/affiliation/FaqAffiliation";
 import { Button } from "@/components/ui/button";
 
 const Affiliation = () => {
@@ -17,6 +18,7 @@ const Affiliation = () => {
         <HowItWorks />
         <EarningSteps />
         <NoLimits />
+        <FaqAffiliation />
         
         <section className="py-16 text-center">
           <Button 
