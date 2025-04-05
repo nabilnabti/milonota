@@ -41,36 +41,44 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
             <SidebarGroup>
               <SidebarMenu>
                 <SidebarMenuItem>
-                  <SidebarMenuButton asChild isActive={isActive("/dashboard")} className={`text-lg ${isActive("/dashboard") ? "bg-gray-100 font-semibold" : ""}`}>
-                    <Link to="/dashboard" className="pl-6 py-3">
-                      <Home className="h-6 w-6" />
+                  <SidebarMenuButton asChild isActive={isActive("/dashboard")} className={`text-base ${isActive("/dashboard") ? "bg-gray-100 font-semibold" : ""}`}>
+                    <Link to="/dashboard" className="pl-6 py-3 flex items-center">
+                      <div className={`rounded-full p-2 mr-3 ${isActive("/dashboard") ? "bg-[#925dc6] text-white" : "bg-gray-100"}`}>
+                        <Home className="h-5 w-5" />
+                      </div>
                       <span>Accueil</span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
                 
                 <SidebarMenuItem>
-                  <SidebarMenuButton asChild isActive={isActive("/dashboard/guide")} className={`text-lg ${isActive("/dashboard/guide") ? "bg-gray-100 font-semibold" : ""}`}>
-                    <Link to="/dashboard/guide" className="pl-6 py-3">
-                      <Info className="h-6 w-6" />
+                  <SidebarMenuButton asChild isActive={isActive("/dashboard/guide")} className={`text-base ${isActive("/dashboard/guide") ? "bg-gray-100 font-semibold" : ""}`}>
+                    <Link to="/dashboard/guide" className="pl-6 py-3 flex items-center">
+                      <div className={`rounded-full p-2 mr-3 ${isActive("/dashboard/guide") ? "bg-[#925dc6] text-white" : "bg-gray-100"}`}>
+                        <Info className="h-5 w-5" />
+                      </div>
                       <span>Guide</span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
                 
                 <SidebarMenuItem>
-                  <SidebarMenuButton asChild isActive={isActive("/dashboard/support")} className={`text-lg ${isActive("/dashboard/support") ? "bg-gray-100 font-semibold" : ""}`}>
-                    <Link to="/dashboard/support" className="pl-6 py-3">
-                      <HelpCircle className="h-6 w-6" />
+                  <SidebarMenuButton asChild isActive={isActive("/dashboard/support")} className={`text-base ${isActive("/dashboard/support") ? "bg-gray-100 font-semibold" : ""}`}>
+                    <Link to="/dashboard/support" className="pl-6 py-3 flex items-center">
+                      <div className={`rounded-full p-2 mr-3 ${isActive("/dashboard/support") ? "bg-[#925dc6] text-white" : "bg-gray-100"}`}>
+                        <HelpCircle className="h-5 w-5" />
+                      </div>
                       <span>Support</span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
                 
                 <SidebarMenuItem>
-                  <SidebarMenuButton asChild isActive={isActive("/dashboard/settings")} className={`text-lg ${isActive("/dashboard/settings") ? "bg-gray-100 font-semibold" : ""}`}>
-                    <Link to="/dashboard/settings" className="pl-6 py-3">
-                      <Settings className="h-6 w-6" />
+                  <SidebarMenuButton asChild isActive={isActive("/dashboard/settings")} className={`text-base ${isActive("/dashboard/settings") ? "bg-gray-100 font-semibold" : ""}`}>
+                    <Link to="/dashboard/settings" className="pl-6 py-3 flex items-center">
+                      <div className={`rounded-full p-2 mr-3 ${isActive("/dashboard/settings") ? "bg-[#925dc6] text-white" : "bg-gray-100"}`}>
+                        <Settings className="h-5 w-5" />
+                      </div>
                       <span>Paramètres</span>
                     </Link>
                   </SidebarMenuButton>

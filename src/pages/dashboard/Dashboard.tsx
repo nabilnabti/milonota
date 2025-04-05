@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
-import { Search, Type, Upload, Mic, FileText, Link as LinkIcon } from "lucide-react";
+import { Search, Type, FileAudio, Mic, FileText, Link as LinkIcon, ScrollText } from "lucide-react";
 import NoteManager, { NoteType } from "@/components/notes/NoteManager";
 
 const Dashboard = () => {
@@ -17,6 +17,7 @@ const Dashboard = () => {
   ]);
   
   const [activeNote, setActiveNote] = useState<NoteType>(null);
+  const [activeTab, setActiveTab] = useState<"all" | "folders">("all");
   
   const handleOpenNote = (type: NoteType) => {
     setActiveNote(type);
@@ -36,64 +37,64 @@ const Dashboard = () => {
           </div>
           <p className="text-gray-600 mt-2 mb-8 ml-4">Enregistrez de l'audio, importez un fichier audio ou utilisez une URL YouTube</p>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4 mt-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-6 mt-8">
             <Card 
-              className="flex flex-col items-center justify-center hover:shadow-md transition-shadow cursor-pointer bg-white"
+              className="flex flex-col items-center justify-center hover:shadow-md transition-all hover:border-[#925dc6] cursor-pointer bg-white"
               onClick={() => handleOpenNote("text")}
             >
-              <CardContent className="flex flex-col items-center justify-center p-4 text-center">
-                <div className="bg-gray-100 rounded-full p-4 mb-3 mt-2">
-                  <Type className="h-6 w-6 text-gray-700" />
+              <CardContent className="flex flex-col items-center justify-center p-6 text-center">
+                <h3 className="font-medium mb-4">Écrire une note</h3>
+                <div className="bg-gray-100 rounded-full p-5 my-3">
+                  <Type className="h-8 w-8 text-gray-700" />
                 </div>
-                <span className="text-sm">Écrire une note</span>
               </CardContent>
             </Card>
             
             <Card 
-              className="flex flex-col items-center justify-center hover:shadow-md transition-shadow cursor-pointer bg-white"
+              className="flex flex-col items-center justify-center hover:shadow-md transition-all hover:border-[#925dc6] cursor-pointer bg-white"
               onClick={() => handleOpenNote("audio-import")}
             >
-              <CardContent className="flex flex-col items-center justify-center p-4 text-center">
-                <div className="bg-gray-100 rounded-full p-4 mb-3 mt-2">
-                  <Upload className="h-6 w-6 text-gray-700" />
+              <CardContent className="flex flex-col items-center justify-center p-6 text-center">
+                <h3 className="font-medium mb-4">Importer un audio</h3>
+                <div className="bg-gray-100 rounded-full p-5 my-3">
+                  <FileAudio className="h-8 w-8 text-gray-700" />
                 </div>
-                <span className="text-sm">Importer un audio</span>
               </CardContent>
             </Card>
             
             <Card 
-              className="flex flex-col items-center justify-center hover:shadow-md transition-shadow cursor-pointer bg-white"
+              className="flex flex-col items-center justify-center hover:shadow-md transition-all hover:border-[#925dc6] cursor-pointer bg-white"
               onClick={() => handleOpenNote("audio-record")}
             >
-              <CardContent className="flex flex-col items-center justify-center p-4 text-center">
-                <div className="bg-gray-100 rounded-full p-4 mb-3 mt-2">
-                  <Mic className="h-6 w-6 text-gray-700" />
+              <CardContent className="flex flex-col items-center justify-center p-6 text-center">
+                <h3 className="font-medium mb-4">Enregistrer un audio</h3>
+                <div className="bg-gray-100 rounded-full p-5 my-3">
+                  <Mic className="h-8 w-8 text-gray-700" />
                 </div>
-                <span className="text-sm">Enregistrer un audio</span>
               </CardContent>
             </Card>
             
             <Card 
-              className="flex flex-col items-center justify-center hover:shadow-md transition-shadow cursor-pointer bg-white"
+              className="flex flex-col items-center justify-center hover:shadow-md transition-all hover:border-[#925dc6] cursor-pointer bg-white"
               onClick={() => handleOpenNote("pdf")}
             >
-              <CardContent className="flex flex-col items-center justify-center p-4 text-center">
-                <div className="bg-gray-100 rounded-full p-4 mb-3 mt-2">
-                  <FileText className="h-6 w-6 text-gray-700" />
+              <CardContent className="flex flex-col items-center justify-center p-6 text-center">
+                <h3 className="font-medium mb-4">Importer un PDF</h3>
+                <div className="bg-gray-100 rounded-full p-5 my-3">
+                  <FileText className="h-8 w-8 text-gray-700" />
                 </div>
-                <span className="text-sm">Importer un PDF</span>
               </CardContent>
             </Card>
             
             <Card 
-              className="flex flex-col items-center justify-center hover:shadow-md transition-shadow cursor-pointer bg-white"
+              className="flex flex-col items-center justify-center hover:shadow-md transition-all hover:border-[#925dc6] cursor-pointer bg-white"
               onClick={() => handleOpenNote("link")}
             >
-              <CardContent className="flex flex-col items-center justify-center p-4 text-center">
-                <div className="bg-gray-100 rounded-full p-4 mb-3 mt-2">
-                  <LinkIcon className="h-6 w-6 text-gray-700" />
+              <CardContent className="flex flex-col items-center justify-center p-6 text-center">
+                <h3 className="font-medium mb-4">Importer un lien</h3>
+                <div className="bg-gray-100 rounded-full p-5 my-3">
+                  <LinkIcon className="h-8 w-8 text-gray-700" />
                 </div>
-                <span className="text-sm">Importer un lien</span>
               </CardContent>
             </Card>
           </div>
@@ -107,10 +108,18 @@ const Dashboard = () => {
           
           <div className="flex flex-wrap justify-between items-center mb-6">
             <div className="flex gap-3 mt-4 sm:mt-0">
-              <Button variant="outline" className="bg-black text-white hover:bg-gray-800 rounded-full">
+              <Button 
+                variant="outline" 
+                className={`${activeTab === "all" ? "bg-black text-white" : "bg-white text-gray-700"} hover:bg-gray-800 hover:text-white rounded-full px-5`}
+                onClick={() => setActiveTab("all")}
+              >
                 Toutes les notes
               </Button>
-              <Button variant="outline" className="bg-white text-gray-700 hover:bg-gray-100 rounded-full">
+              <Button 
+                variant="outline" 
+                className={`${activeTab === "folders" ? "bg-black text-white" : "bg-white text-gray-700"} hover:bg-gray-800 hover:text-white rounded-full px-5`}
+                onClick={() => setActiveTab("folders")}
+              >
                 Mes dossiers
               </Button>
             </div>
@@ -118,19 +127,19 @@ const Dashboard = () => {
             <div className="relative">
               <Input
                 placeholder="Rechercher"
-                className="pl-10 w-full sm:w-80 rounded-full"
+                className="pl-10 w-full sm:w-80 rounded-full bg-white"
               />
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
             </div>
           </div>
           
           {notes.map((note) => (
-            <Card key={note.id} className="mb-4 hover:shadow-md transition-shadow cursor-pointer bg-white">
+            <Card key={note.id} className="mb-4 hover:shadow-md transition-all hover:border-[#925dc6] cursor-pointer bg-white">
               <CardContent className="p-6">
-                <div className="flex gap-4">
+                <div className="flex gap-5">
                   <div className="shrink-0">
-                    <div className="bg-amber-100 rounded-full p-3">
-                      <FileText className="h-6 w-6 text-amber-600" />
+                    <div className="bg-gray-100 rounded-full p-4">
+                      <ScrollText className="h-7 w-7 text-gray-600" />
                     </div>
                   </div>
                   <div className="flex-1">
