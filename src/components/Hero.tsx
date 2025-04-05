@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import LoginModal from "./LoginModal";
@@ -17,9 +16,9 @@ const Hero = () => {
       <div className="max-w-5xl mx-auto px-6">
         <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-8">
           <span>Créez des</span><br />
-          <span className="text-pink-500">fiches de Révision</span><br />
+          <span className="text-[#925dc6]">fiches de Révision</span><br />
           <span>depuis </span>
-          <span className="text-pink-500">votre micro</span><br />
+          <span className="text-[#925dc6]">votre micro</span><br />
           <span>avec L'IA</span>
         </h1>
         
@@ -31,19 +30,16 @@ const Hero = () => {
           <span className="text-violet font-semibold">150,000+ Quiz et fiches de révisions générés</span>
         </div>
         
-        <div>
-          <Button 
-            className="bg-pink-500 hover:bg-pink-600 text-white rounded-full px-10 py-6 text-lg"
-            onClick={handleTryForFree}
-          >
-            Essayer Gratuitement
-          </Button>
-        </div>
+        <Button 
+          className="bg-[#925dc6] hover:bg-[#7a4ea5] text-white rounded-full px-10 py-6 text-lg"
+          onClick={handleTryForFree}
+        >
+          Essayer Gratuitement
+        </Button>
         
         <p className="text-gray-600 mt-12">Utilisés par des étudiants de</p>
       </div>
       
-      {/* Login Modal */}
       <LoginModal 
         isOpen={isLoginModalOpen} 
         onClose={() => setIsLoginModalOpen(false)} 

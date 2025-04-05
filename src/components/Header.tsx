@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -33,7 +32,7 @@ const Header = () => {
       <div className="flex items-center gap-2">
         <Link to="/">
           <span className="text-2xl font-bold">Neuronote</span>
-          <span className="text-pink-500">🧠</span>
+          <span className="text-[#925dc6]">🧠</span>
         </Link>
       </div>
       
@@ -50,13 +49,12 @@ const Header = () => {
       </nav>
       
       <Button 
-        className="bg-pink-500 hover:bg-pink-600 text-white rounded-full px-6"
+        className="bg-[#925dc6] hover:bg-[#7a4ea5] text-white rounded-full px-6"
         onClick={handleTryForFree}
       >
         Essayer Gratuitement
       </Button>
       
-      {/* Login Modal */}
       <LoginModal 
         isOpen={isLoginModalOpen} 
         onClose={() => setIsLoginModalOpen(false)} 
