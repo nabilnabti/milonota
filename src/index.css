@@ -121,3 +121,44 @@
     linear-gradient(to right, rgba(155, 135, 245, 0.1) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(155, 135, 245, 0.1) 1px, transparent 1px);
 }
+
+/* Styles personnalisés pour les modales */
+.file-upload-button {
+  @apply px-4 py-2 rounded-md bg-gray-100 hover:bg-gray-200 transition-colors cursor-pointer;
+}
+
+.dialog-title {
+  @apply text-2xl font-bold;
+}
+
+.dialog-subtitle {
+  @apply text-gray-500 mb-6;
+}
+
+.dialog-form-label {
+  @apply font-medium mb-2 block;
+}
+
+.dialog-button-primary {
+  @apply rounded-full px-6 py-2 bg-[#925dc6] hover:bg-[#7a4ea5] text-white;
+}
+
+.dialog-button-secondary {
+  @apply rounded-full px-6 py-2 bg-gray-100 hover:bg-gray-200 text-gray-800;
+}
+
+/* Styles pour animation de l'affichage des modales */
+.slide-in {
+  animation: slideIn 0.3s forwards;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
