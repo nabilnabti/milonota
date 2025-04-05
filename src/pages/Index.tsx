@@ -5,6 +5,8 @@ import ProblemSection from "@/components/ProblemSection";
 import SolutionSection from "@/components/SolutionSection";
 import FeatureShowcase from "@/components/FeatureShowcase";
 import UniversityLogos from "@/components/UniversityLogos";
+import FaqSection from "@/components/FaqSection";
+import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
@@ -16,10 +18,9 @@ const Index = () => {
         <ProblemSection />
         <SolutionSection />
         <FeatureShowcase />
+        <FaqSection />
       </main>
-      <footer className="py-6 text-center text-gray-500 text-sm">
-        <p>© 2025 Neuronote. Tous droits réservés.</p>
-      </footer>
+      <Footer />
     </div>
   );
 };
