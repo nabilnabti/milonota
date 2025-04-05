@@ -1,5 +1,3 @@
-
-import { X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Textarea } from "@/components/ui/textarea";
@@ -16,7 +14,6 @@ const TextNoteDialog = ({ isOpen, onClose }: TextNoteDialogProps) => {
   const [folder, setFolder] = useState("Toutes les notes");
 
   const handleSubmit = () => {
-    // Ici nous ajouterions la logique pour sauvegarder la note
     console.log("Note texte sauvegardée:", { content, folder });
     onClose();
   };
@@ -31,9 +28,6 @@ const TextNoteDialog = ({ isOpen, onClose }: TextNoteDialogProps) => {
               <span className="mx-2">{'>'}</span>
               <span>Créer une note</span>
             </div>
-            <button onClick={onClose} className="rounded-full p-1 hover:bg-gray-100">
-              <X className="h-5 w-5" />
-            </button>
           </div>
 
           <div className="p-6">
