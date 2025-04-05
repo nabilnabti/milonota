@@ -4,6 +4,7 @@ import {
   SidebarProvider, 
   Sidebar, 
   SidebarContent,
+  SidebarGroup,
   SidebarMenu,
   SidebarMenuItem,
   SidebarMenuButton
@@ -25,75 +26,63 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
   return (
     <SidebarProvider>
       <div className="flex min-h-screen w-full">
-        <Sidebar className="border-r border-gray-100">
+        <Sidebar className="border-r border-gray-200">
           <SidebarContent>
-            <div className="px-6 py-10">
+            <div className="px-6 py-8">
               <div className="flex items-center gap-2 mb-1">
                 <Link to="/dashboard" className="flex items-center">
                   <span className="text-3xl font-bold">Neuronote</span>
-                  <span className="text-[#eb4899] text-2xl ml-1">🧠</span>
+                  <span className="text-[#925dc6] text-2xl ml-1">🧠</span>
                 </Link>
               </div>
               <p className="text-sm text-gray-500 italic ml-1">propulsé par l'IA</p>
             </div>
             
-            <div className="mt-8 flex flex-col space-y-2 px-4">
+            <SidebarGroup>
               <SidebarMenu>
                 <SidebarMenuItem>
-                  <SidebarMenuButton asChild className={`flex items-center rounded-full py-3.5 pl-3 pr-4 text-lg transition-colors ${isActive("/dashboard") ? "bg-gray-100 font-semibold" : "hover:bg-gray-50"}`}>
-                    <Link to="/dashboard" className="flex items-center gap-3">
-                      <div className={`flex h-11 w-11 items-center justify-center rounded-full bg-gray-100 ${isActive("/dashboard") ? "bg-gray-200" : ""}`}>
-                        <Home className="h-5 w-5 text-gray-600" />
-                      </div>
-                      <span className="text-gray-700">Accueil</span>
+                  <SidebarMenuButton asChild isActive={isActive("/dashboard")} className={`text-lg ${isActive("/dashboard") ? "bg-gray-100 font-semibold" : ""}`}>
+                    <Link to="/dashboard" className="pl-6 py-3">
+                      <Home className="h-6 w-6" />
+                      <span>Accueil</span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
                 
                 <SidebarMenuItem>
-                  <SidebarMenuButton asChild className={`flex items-center rounded-full py-3.5 pl-3 pr-4 text-lg transition-colors ${isActive("/dashboard/guide") ? "bg-gray-100 font-semibold" : "hover:bg-gray-50"}`}>
-                    <Link to="/dashboard/guide" className="flex items-center gap-3">
-                      <div className={`flex h-11 w-11 items-center justify-center rounded-full bg-gray-100 ${isActive("/dashboard/guide") ? "bg-gray-200" : ""}`}>
-                        <Info className="h-5 w-5 text-gray-600" />
-                      </div>
-                      <span className="text-gray-700">Guide</span>
+                  <SidebarMenuButton asChild isActive={isActive("/dashboard/guide")} className={`text-lg ${isActive("/dashboard/guide") ? "bg-gray-100 font-semibold" : ""}`}>
+                    <Link to="/dashboard/guide" className="pl-6 py-3">
+                      <Info className="h-6 w-6" />
+                      <span>Guide</span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
                 
                 <SidebarMenuItem>
-                  <SidebarMenuButton asChild className={`flex items-center rounded-full py-3.5 pl-3 pr-4 text-lg transition-colors ${isActive("/dashboard/support") ? "bg-gray-100 font-semibold" : "hover:bg-gray-50"}`}>
-                    <Link to="/dashboard/support" className="flex items-center gap-3">
-                      <div className={`flex h-11 w-11 items-center justify-center rounded-full bg-gray-100 ${isActive("/dashboard/support") ? "bg-gray-200" : ""}`}>
-                        <HelpCircle className="h-5 w-5 text-gray-600" />
-                      </div>
-                      <span className="text-gray-700">Support</span>
+                  <SidebarMenuButton asChild isActive={isActive("/dashboard/support")} className={`text-lg ${isActive("/dashboard/support") ? "bg-gray-100 font-semibold" : ""}`}>
+                    <Link to="/dashboard/support" className="pl-6 py-3">
+                      <HelpCircle className="h-6 w-6" />
+                      <span>Support</span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
                 
                 <SidebarMenuItem>
-                  <SidebarMenuButton asChild className={`flex items-center rounded-full py-3.5 pl-3 pr-4 text-lg transition-colors ${isActive("/dashboard/settings") ? "bg-gray-100 font-semibold" : "hover:bg-gray-50"}`}>
-                    <Link to="/dashboard/settings" className="flex items-center gap-3">
-                      <div className={`flex h-11 w-11 items-center justify-center rounded-full bg-gray-100 ${isActive("/dashboard/settings") ? "bg-gray-200" : ""}`}>
-                        <Settings className="h-5 w-5 text-gray-600" />
-                      </div>
-                      <span className="text-gray-700">Paramètres</span>
+                  <SidebarMenuButton asChild isActive={isActive("/dashboard/settings")} className={`text-lg ${isActive("/dashboard/settings") ? "bg-gray-100 font-semibold" : ""}`}>
+                    <Link to="/dashboard/settings" className="pl-6 py-3">
+                      <Settings className="h-6 w-6" />
+                      <span>Paramètres</span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               </SidebarMenu>
-            </div>
+            </SidebarGroup>
             
-            <div className="mt-auto px-5 py-10">
-              <Link to="/dashboard/premium" className={`group w-full transition-colors`}>
-                <div className="bg-[#eb4899] hover:bg-[#d93f87] rounded-xl p-3 text-white">
-                  <div className="flex items-center justify-center gap-2 mb-1">
-                    <Zap className="w-5 h-5" />
-                    <span className="font-semibold">Notes illimitées</span>
-                  </div>
-                  <div className="text-sm text-center">Essai gratuit</div>
-                </div>
+            <div className="mt-auto px-6 py-8">
+              <Link to="/dashboard/premium" className={`flex flex-col items-center gap-2 bg-[#925dc6] text-white rounded-lg p-4 hover:bg-[#7a4ea5] transition-colors ${isActive("/dashboard/premium") ? "bg-[#7a4ea5]" : ""}`}>
+                <Zap className="w-6 h-6" />
+                <span className="font-semibold">Notes illimitées</span>
+                <span className="text-sm">Essai gratuit</span>
               </Link>
             </div>
           </SidebarContent>
